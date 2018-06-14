@@ -50,3 +50,10 @@ module.exports.addUser = function(newUser, callback){
 // If an error occurs executing the query, the error parameter will contain an error document, 
 // and result will be null. If the query is successful, the error parameter will be null, 
 // and the result will be populated with the results of the query.
+
+module.exports.comparePassword = function(candidatePassword, hash, callback){
+    bcrypt.compare(candidatePassword, hash, function(err, isMatch){
+        if(err) throw err;
+        callback(null,isMatch);
+    });
+}
