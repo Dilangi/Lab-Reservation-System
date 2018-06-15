@@ -1,3 +1,22 @@
-<p>
-  navbar works!
-</p>
+<!--<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">-->
+  <nav class="navbar navbar-expand bg-dark">
+    <a class="navbar-brand" href="#">Lab Reservation</a>
+    <!--<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>-->
+   <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+      <ul class="navbar-nav mr-auto nav-left">
+        <li class="nav-item active" [routerLinkActive] = "['active']" [routerLinkActiveOptions] = "{exact:true}">
+          <a [routerLink] = "['/']" class="nav-link">Home</a>
+        </li>
+      </ul>
+     <!-- <ul class="navbar-nav mr-auto nav-right">
+          <li class="nav-item active" [routerLinkActive] = "['active']" [routerLinkActiveOptions] = "{exact:true}">
+            <a [routerLink] = "['/login']" class="nav-link">Login</a>
+          </li>
+          <li class="nav-item active" [routerLinkActive] = "['active']" [routerLinkActiveOptions] = "{exact:true}">
+              <a [routerLink] = "['/register']" class="nav-link">Register</a>
+            </li>
+        </ul>-->
+    </div>
+  </nav>
