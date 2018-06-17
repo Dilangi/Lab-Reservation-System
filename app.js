@@ -51,6 +51,11 @@ app.get('/', function(req,res){
     res.send('Hello');
 });
 
+//Index Route
+app.get('/',(req,res)=>{
+    res.sendFile(path.join(__dirname, 'public/index.html'));
+})
+
 // start server
 app.listen(port, function(err){
     if(err){
