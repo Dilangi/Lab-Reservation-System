@@ -2,7 +2,7 @@
 const express = require('express');
 const mongoose = require('mongoose'); // object document mapper to work with mongodb
 const path = require('path'); 
-const cors = require('cors'); // make requests from frontend to another domain
+const cors = require('cors'); // make requests from frontend to another domain 
 const bodyParser = require('body-parser'); // grabs incoming requests
 const passport = require('passport'); //use for authentication
 const config = require('./config/database');
