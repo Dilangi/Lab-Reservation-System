@@ -4,7 +4,6 @@ import { map } from "rxjs/operators";
 import {tokenNotExpired} from 'angular2-jwt';
 
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -59,5 +58,13 @@ export class AuthService {
     this.authToken = null;
     this.user = null;
     localStorage.clear();
+  }
+
+  //add reservation
+  addReservation(lab){ 
+    let headers = new Headers();
+    headers.append('Content-Type','application/json');
+      return this.http.post('http://localhost:3000/users/addReservation', lab, {headers: headers})
+     .pipe(map(res => res.json()));
   }
 }

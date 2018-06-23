@@ -1,0 +1,34 @@
+
+.selections {
+    margin-top: 15%;
+}
+
+.selections #view {
+    background-color: #45eba5;
+}
+
+
+.selections #add {
+    background-color: #21aba5;
+}
+
+.selections button:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+.selections .card h4 {
+    padding-top: 35px;
+    padding-bottom: 35px;
+    padding-right:20px;
+    padding-left:20px;
+}
+
+.selections .card a {
+    color: #ffffff;
+}
+
+.selections .card a:hover {
+    color: #ffffff;
+}
+
+
+

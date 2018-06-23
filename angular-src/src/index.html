@@ -9,8 +9,11 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
 <!-- Material Design Bootstrap -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.4/css/mdb.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://bootswatch.com/4/cosmo/bootstrap.min.css">
-  <base href="/">
+ <!--Template--> 
+<link rel="stylesheet" href="https://bootswatch.com/4/cosmo/bootstrap.min.css">
+
+<link rel="stylesheet"  href = "https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.min.css">
+<base href="/">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -19,4 +22,12 @@
 <body>
   <app-root></app-root>
 </body>
+<script>
+  var date = new Date();
+    date.setDate(date.getDate());
+    
+    $('#date').datepicker({ 
+        startDate: date
+    });
+  </script>
 </html>

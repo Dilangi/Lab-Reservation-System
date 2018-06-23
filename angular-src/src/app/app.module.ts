@@ -1,9 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { HttpModule } from '@angular/http';
+import { UserDashModule } from './user-dash/user-dash.module';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -17,14 +18,23 @@ import {ValidateService} from './services/validate.service';
 import {AuthService} from './services/auth.service';
 import {FlashMessagesModule} from 'angular2-flash-messages';
 import {AuthGuard} from './guards/auth.guard';
+import { AddReservationComponent } from './components/add-reservation/add-reservation.component';
+import { ViewReservationComponent } from './components/view-reservation/view-reservation.component';
+
+
 
 const appRoutes: Routes = [
   {path:'', component: HomeComponent},
   {path:'register', component: RegisterComponent},
   {path:'login', component: LoginComponent},
   {path:'dashboard', component: DashboardComponent, canActivate:[AuthGuard]},
-  {path:'profile', component: ProfileComponent, canActivate:[AuthGuard]}
-] 
+  {path:'profile', component: ProfileComponent, canActivate:[AuthGuard]},
+  {path:'userDash', component: UserDashModule},
+  {path:'addReservation', component: AddReservationComponent},
+  {path:'veiwReservation', component: ViewReservationComponent}
+  
+]
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,15 +44,18 @@ const appRoutes: Routes = [
     HomeComponent,
     ProfileComponent,
     DashboardComponent,
-    
+    AddReservationComponent,
+    ViewReservationComponent
   ],
+
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRoutes), // appRoutes: an object
     FormsModule, 
     FlashMessagesModule.forRoot(),
     HttpClientModule,
-    HttpModule
+    HttpModule,
+    UserDashModule
   ],
 
   providers: [ValidateService,AuthService, AuthGuard],

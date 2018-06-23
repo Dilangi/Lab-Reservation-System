@@ -4,6 +4,7 @@ const passport = require('passport');
 const jwt = require('jsonwebtoken');
 const config = require('../config/database');
 const User = require('../models/user');
+const Lab = require('../models/lab');
 
 // Register
 router.post('/register',function(req, res, next){
@@ -63,6 +64,27 @@ router.post('/authenticate', function(req, res, next){
 // Profile
 router.get('/profile', passport.authenticate('jwt', {session:false}), function(req, res, next){
     res.json({user: req.user});
+});
+
+//add reservation
+router.post('/addReservation', function(req, res, next){
+    let newLabReservation = new Lab({  //creating an instance using the model
+        name: req.body.name,
+        labname: req.body.labname,
+        subject: req.body.subject,
+        date: req.body.date,
+        from: req.body.from,
+        to: req.body.to
+
+    });
+
+    Lab.addLab(newLabReservation, function(err, lab){  
+        if(err){
+            res.json({success:false, msg:'Failed to add lab'});
+        } else {
+            res.json({success: true, msg:'Lab Reservation successful'});
+        }
+    });
 });
 
 module.exports = router;
