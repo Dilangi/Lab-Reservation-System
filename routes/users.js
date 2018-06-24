@@ -87,4 +87,16 @@ router.post('/addReservation', function(req, res, next){
     });
 });
 
+router.get('/veiwReservation', function(req, res, next){
+    Lab.getLabs({}, function(err, labs){
+        if(err){
+            throw err;
+        } else {
+            res.json(labs);
+        }
+        
+    });    
+
+});
+
 module.exports = router;

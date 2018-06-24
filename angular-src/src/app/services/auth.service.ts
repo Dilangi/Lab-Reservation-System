@@ -67,4 +67,12 @@ export class AuthService {
       return this.http.post('http://localhost:3000/users/addReservation', lab, {headers: headers})
      .pipe(map(res => res.json()));
   }
+
+  //view reservation
+  getReservation(){
+    let headers = new Headers();
+    headers.append('Content-Type','application/json');
+      return this.http.get('http://localhost:3000/users/veiwReservation', {headers: headers})
+     .pipe(map(res => res.json()));
+  }
 }

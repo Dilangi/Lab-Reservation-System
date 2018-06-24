@@ -35,10 +35,11 @@
         </div>
       <div class="form-group">
         <label>Add Time Slots</label>
+        <br><br>
           <label><b>From</b></label>
-          <input type="time" min="07.00" max="19.00" class="form-control" name = "from" [(ngModel)] = "from">
+          <input type="time" min="07:00" max="19:00" id = "myTime" class="form-control" name = "from" [(ngModel)] = "from">
           <label><b>To</b></label>
-          <input type="time" min="07.00" max="19.00" class="form-control" name = "to" [(ngModel)] = "to">
+          <input type="time" min="07:00" max="19:00" class="form-control" name = "to" [(ngModel)] = "to">
       </div>
      <div class=" form-group">
       <input type="submit" class="btn" value="Submit">
