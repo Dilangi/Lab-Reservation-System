@@ -10,6 +10,7 @@ import { Profile } from 'selenium-webdriver/firefox';
 })
 export class ProfileComponent implements OnInit {
   user:Object;
+  lab = [];
 
   constructor(
     private authService:AuthService,
@@ -24,7 +25,16 @@ export class ProfileComponent implements OnInit {
     console.log(err);
     return false;
   }
-);
-}
+  );
 
+  const username = this.authService.loadUser().username;
+  this.authService.getMyReservation(username).subscribe(data =>{
+    this.lab = data.labs;
+    console.log(username);
+  });
+  err => {
+    console.log(err);
+    return false;
+  }
+  }
 }

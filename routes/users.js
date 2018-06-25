@@ -74,7 +74,7 @@ router.post('/addReservation', function(req, res, next){
         subject: req.body.subject,
         date: req.body.date,
         from: req.body.from,
-        to: req.body.to
+        to: req.body.to,
 
     });
 
@@ -92,11 +92,22 @@ router.get('/veiwReservation', function(req, res, next){
         if(err){
             throw err;
         } else {
-            res.json(labs);
+            res.json({labs:labs});
         }
         
     });    
 
+});
+
+router.get('/myReservations/:username', function(req, res, next){
+    const username = req.params.username;
+    Lab.getLabsByUsername(username, function(err, labs){
+        if(err){
+            res.json({success:false,msg:'Failed to load the data'});
+        } else {
+            res.json({success:true, labs:labs});
+        }
+    });
 });
 
 module.exports = router;

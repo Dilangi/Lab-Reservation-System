@@ -8,7 +8,7 @@ import {Router} from '@angular/router';
   styleUrls: ['./view-reservation.component.css']
 })
 export class ViewReservationComponent implements OnInit {
- private lab = [];
+lab = [];
 
   constructor(
     private authService:AuthService,
@@ -18,10 +18,12 @@ export class ViewReservationComponent implements OnInit {
   ngOnInit() {
     this.authService.getReservation().subscribe(
       data =>{
-        console.log(data);
+        this.lab = data.labs;
+        console.log(this.lab);
       },
       error =>{
         console.log(error);
+        return false;
       }
     )
   }

@@ -75,4 +75,16 @@ export class AuthService {
       return this.http.get('http://localhost:3000/users/veiwReservation', {headers: headers})
      .pipe(map(res => res.json()));
   }
+
+  // view my reservations
+  getMyReservation(username){
+    let headers = new Headers();
+    headers.append('Content-Type','application/json');
+      return this.http.get('http://localhost:3000/users/myReservations/:'+username, {headers: headers})
+     .pipe(map(res => res.json()));
+  }
+
+  loadUser(){
+    return JSON.parse(localStorage.getItem('user'));
+  }
 }

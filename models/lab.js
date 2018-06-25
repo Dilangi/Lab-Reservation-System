@@ -29,6 +29,7 @@ const LabSchema = mongoose.Schema({
         required: true
     }
 
+
 });
 
 const Lab = module.exports = mongoose.model('Lab',LabSchema);
@@ -37,6 +38,13 @@ module.exports.addLab = function(newLabReservation, callback){
     newLabReservation.save(callback);
 }
 
+// get all lab reservations
 module.exports.getLabs = function({}, callback){
     Lab.find({},callback);
+}
+
+// get lab reservations by username
+module.exports.getLabsByUsername = function(username, callback){
+    const query = {username: username};
+    Lab.find(query, callback);
 }

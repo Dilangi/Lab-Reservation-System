@@ -19,6 +19,7 @@ const UserSchema = mongoose.Schema({
         type: String,
         required: true
     }
+   
 });
 
 // creating a model, 'User' is the collection name & 'UserSchema' is one that you need to use
