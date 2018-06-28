@@ -4,7 +4,7 @@ const config = require('../config/database');
 
 // lab Schema
 const LabSchema = mongoose.Schema({
-    name: {
+    username: {
         type: String,
         required: true
     },
@@ -47,4 +47,22 @@ module.exports.getLabs = function({}, callback){
 module.exports.getLabsByUsername = function(username, callback){
     const query = {username: username};
     Lab.find(query, callback);
+}
+
+module.exports.getLabById = function(id,callback){
+    Lab.findById(id,callback);
+}
+
+// delete my reservation
+module.exports.deleteReservation = function(id,callback){
+    const query = {_id: id};
+    Lab.remove(query,callback);
+}
+
+// edit my reservation
+module.exports.editReservation = function(id,eReservation,callback){
+    console.log('this is model');
+    console.log(eReservation);
+    const query = {_id: id};
+    Lab.update(query,eReservation,callback);
 }

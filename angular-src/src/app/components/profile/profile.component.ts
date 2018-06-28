@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {AuthService} from '../../services/auth.service';
 import {Router} from '@angular/router';
 import { Profile } from 'selenium-webdriver/firefox';
+import {lab} from '../../lab';
 
 @Component({
   selector: 'app-profile',
@@ -11,6 +12,8 @@ import { Profile } from 'selenium-webdriver/firefox';
 export class ProfileComponent implements OnInit {
   user:Object;
   lab = [];
+ 
+
 
   constructor(
     private authService:AuthService,
@@ -30,11 +33,33 @@ export class ProfileComponent implements OnInit {
   const username = this.authService.loadUser().username;
   this.authService.getMyReservation(username).subscribe(data =>{
     this.lab = data.labs;
-    console.log(username);
+   // console.log(username); testing
+    //console.log(data.labs);
   });
   err => {
     console.log(err);
     return false;
   }
-  }
 }
+
+onDelete(_id){
+  console.log(_id);
+  this.authService.delete(_id).subscribe(res =>{
+    if(res.success){
+      this.router.navigate(['/profile']);
+      console.log('deleted');
+    }
+    
+    //this.lab = res.labs;
+    //console.log(res.labs);
+    
+  });
+
+} 
+
+onUpdate(id){
+  this.router.navigate(['/editReservation/'+id]);
+
+}
+}
+

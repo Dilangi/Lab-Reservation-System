@@ -1,3 +1,8 @@
+.jumbotron {
+    background-color: #E7E7DE;
+    opacity: 0.8;
+}
+
 .table {
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
@@ -6,4 +11,13 @@
     color: #ffffff;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 20px;
+}
+
+.reservation {
+    margin-top: 50px;
+}
+
+
+.reservation #edit {
+    background-color: #21aba5;
 }

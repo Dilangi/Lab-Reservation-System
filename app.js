@@ -26,6 +26,9 @@ const app = express();
 // users routes
 const users = require('./routes/users');
 
+//lab routes
+const labs = require('./routes/labs');
+
 // initializing the port
 const port = 3000;
 
@@ -45,6 +48,7 @@ app.use(passport.session());
 require('./config/passport')(passport);
 
 app.use('/users',users);
+app.use('/labs',labs);
 
 
 // Index route

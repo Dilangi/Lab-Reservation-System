@@ -10,7 +10,7 @@ import {Router} from '@angular/router';
   styleUrls: ['./add-reservation.component.css']
 })
 export class AddReservationComponent implements OnInit {
-  name: String;
+  username: String;
   labname: String;
   subject:String;
   date: Date;
@@ -28,8 +28,9 @@ export class AddReservationComponent implements OnInit {
   }
 
   addLabSubmit(){
+    const user = this.authService.loadUser();
     const lab = {
-      name: this.name,
+      username: user.username,
       labname: this.labname,
       subject: this.subject,
       date: this.date,

@@ -21,7 +21,7 @@ export class ValidateService {
   }
 
   validateReservation(lab){
-    if(lab.name == undefined || lab.labname == undefined || lab.subject == undefined || lab.date == undefined || lab.from == undefined || lab.to == undefined){
+    if(lab.labname == undefined || lab.subject == undefined || lab.date == undefined || lab.from == undefined || lab.to == undefined){
       return false;
     } else {
       return true;

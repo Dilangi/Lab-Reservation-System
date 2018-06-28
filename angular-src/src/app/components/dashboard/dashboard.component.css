@@ -1,6 +1,8 @@
 
 .selections {
     margin-top: 15%;
+    position: relative;
+    left:40px;
 }
 
 .selections #view {

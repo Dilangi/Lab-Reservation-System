@@ -66,48 +66,5 @@ router.get('/profile', passport.authenticate('jwt', {session:false}), function(r
     res.json({user: req.user});
 });
 
-//add reservation
-router.post('/addReservation', function(req, res, next){
-    let newLabReservation = new Lab({  //creating an instance using the model
-        name: req.body.name,
-        labname: req.body.labname,
-        subject: req.body.subject,
-        date: req.body.date,
-        from: req.body.from,
-        to: req.body.to,
-
-    });
-
-    Lab.addLab(newLabReservation, function(err, lab){  
-        if(err){
-            res.json({success:false, msg:'Failed to add lab'});
-        } else {
-            res.json({success: true, msg:'Lab Reservation successful'});
-        }
-    });
-});
-
-router.get('/veiwReservation', function(req, res, next){
-    Lab.getLabs({}, function(err, labs){
-        if(err){
-            throw err;
-        } else {
-            res.json({labs:labs});
-        }
-        
-    });    
-
-});
-
-router.get('/myReservations/:username', function(req, res, next){
-    const username = req.params.username;
-    Lab.getLabsByUsername(username, function(err, labs){
-        if(err){
-            res.json({success:false,msg:'Failed to load the data'});
-        } else {
-            res.json({success:true, labs:labs});
-        }
-    });
-});
 
 module.exports = router;

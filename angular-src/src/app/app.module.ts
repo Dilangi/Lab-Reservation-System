@@ -20,6 +20,8 @@ import {FlashMessagesModule} from 'angular2-flash-messages';
 import {AuthGuard} from './guards/auth.guard';
 import { AddReservationComponent } from './components/add-reservation/add-reservation.component';
 import { ViewReservationComponent } from './components/view-reservation/view-reservation.component';
+import { CreateUpdateComponent } from './components/create-update/create-update.component';
+
 
 
 
@@ -31,7 +33,8 @@ const appRoutes: Routes = [
   {path:'profile', component: ProfileComponent, canActivate:[AuthGuard]},
   {path:'userDash', component: UserDashModule},
   {path:'addReservation', component: AddReservationComponent},
-  {path:'veiwReservation', component: ViewReservationComponent}
+  {path:'veiwReservation', component: ViewReservationComponent},
+  {path:'editReservation/:id',component:CreateUpdateComponent}
   
 ]
 
@@ -45,7 +48,8 @@ const appRoutes: Routes = [
     ProfileComponent,
     DashboardComponent,
     AddReservationComponent,
-    ViewReservationComponent
+    ViewReservationComponent,
+    CreateUpdateComponent
   ],
 
   imports: [
@@ -55,7 +59,7 @@ const appRoutes: Routes = [
     FlashMessagesModule.forRoot(),
     HttpClientModule,
     HttpModule,
-    UserDashModule
+    UserDashModule,
   ],
 
   providers: [ValidateService,AuthService, AuthGuard],

@@ -1,0 +1,47 @@
+<div class="jumbotron">
+  <h1 class="page-header text-center">Add Lab Reservation</h1>
+     <form (submit) = "onEditLabReservation(id)" > <!--event creating-->
+       <div class="form-group">
+           <label>Select Lab</label>
+           <select class="form-control" id="exampleSelect1" name="labname" [(ngModel)] = "labname">
+             <option>None</option>
+             <option>Lab A</option>
+             <option>Lab B</option>
+             <option>Lab C</option>
+             <option>Lab D</option>
+             <option>Lab E</option>
+             <option>3rd Year Lab</option>
+             <option>4th Year Lab</option>
+           </select>
+         </div>
+         <div class="form-group">
+           <label>Select Subject</label>
+             <select class="form-control" name="subject" [(ngModel)] = "subject">
+               <option>None</option>
+               <option>SCS1201</option>
+               <option>SCS1202</option>
+               <option>SCS1203</option>
+               <option>SCS1204</option>
+               <option>SCS1205</option>
+           </select>
+         </div>
+         <div class="form-group">
+             <label>Select Date</label>
+             <input type="date" class="form-control" name = "date" [(ngModel)] = "date" placeholder="dd/mm/yy">
+         </div>
+       <div class="form-group">
+         <label>Add Time Slots</label>
+         <br><br>
+           <label><b>From</b></label>
+           <input type="time" min="07:00" max="19:00" id = "myTime" class="form-control" name = "from" [(ngModel)] = "from">
+           <label><b>To</b></label>
+           <input type="time" min="07:00" max="19:00" class="form-control" name = "to" [(ngModel)] = "to">
+       </div>
+      <div class=" form-group">
+       <input type="submit" class="btn" value="Submit">
+     </div>
+   </form>
+ </div>
+ 
+  
+ 

@@ -64,7 +64,7 @@ export class AuthService {
   addReservation(lab){ 
     let headers = new Headers();
     headers.append('Content-Type','application/json');
-      return this.http.post('http://localhost:3000/users/addReservation', lab, {headers: headers})
+      return this.http.post('http://localhost:3000/labs/addReservation', lab, {headers: headers})
      .pipe(map(res => res.json()));
   }
 
@@ -72,7 +72,7 @@ export class AuthService {
   getReservation(){
     let headers = new Headers();
     headers.append('Content-Type','application/json');
-      return this.http.get('http://localhost:3000/users/veiwReservation', {headers: headers})
+      return this.http.get('http://localhost:3000/labs/veiwReservation', {headers: headers})
      .pipe(map(res => res.json()));
   }
 
@@ -80,11 +80,38 @@ export class AuthService {
   getMyReservation(username){
     let headers = new Headers();
     headers.append('Content-Type','application/json');
-      return this.http.get('http://localhost:3000/users/myReservations/:'+username, {headers: headers})
+      return this.http.get('http://localhost:3000/labs/myReservations/'+username, {headers: headers})
      .pipe(map(res => res.json()));
+  }
+
+  // get reservation for particular id
+  getOneReservation(id){
+    //console.log(id); // testing
+    let headers = new Headers();
+    headers.append('Content-Type','application/json');
+      return this.http.get('http://localhost:3000/labs/getReservation/'+id, {headers: headers})
+     .pipe(map(res => res.json()));
+  }
+
+  delete(id){
+    let headers = new Headers();
+    headers.append('Content-Type','application/json');
+    return this.http.get('http://localhost:3000/labs/delete/'+id, {headers: headers})
+    .pipe(map(res => res.json()));
   }
 
   loadUser(){
     return JSON.parse(localStorage.getItem('user'));
   }
+
+  update(id,reservation){
+    console.log(id);
+    //console.log(reservation);
+    let headers = new Headers();
+    headers.append('Content-Type','application/json');
+    return this.http.post('http://localhost:3000/labs/update/'+id, reservation,{headers:headers})
+    .pipe(map(res => res.json()));
+  }
+  
 }
+

@@ -1,32 +1,36 @@
-<div *ngIf = "user">
-  <h2 class="page-header">{{user.name}}</h2>
-  <ul class="list-group">
-    <li class="list-group-item">Username: {{user.username}}</li>
-    <li class="list-group-item">Email: {{user.email}}</li>
-  </ul>
-</div>
+<div class="jumbotron">
+  <div *ngIf = "user">
+    <h2 class="page-header">{{user.name}}</h2>
+    <ul class="list-group">
+      <li class="list-group-item">Username: {{user.username}}</li>
+      <li class="list-group-item">Email: {{user.email}}</li>
+    </ul>
+  </div>
 
-<div>
-  <h2 class="page-header">Reservations</h2>
-  <table class="table table-hover">
-    <thead>
-      <tr id="table-head">
-        <th>LAB NAME</th>
-        <th>DATE</th>
-        <th>TIME SLOT</th>
-        <th>LECTURER/INSTRUCTOR</th>
-        <th>SUBJECT</th>
-      
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor = "let lab of lab">
-        <td><b>{{lab.labname}}</b></td>
-        <td>{{lab.date}}</td>
-        <td>{{lab.from}} - {{lab.to}}</td>
-        <td>{{lab.name}}</td>
-        <td>{{lab.subject}}</td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="reservation">
+    <h2 class="page-header text-center">My Reservations</h2>
+    <table class="table table-hover" *ngIf = "lab">
+      <thead>
+        <tr id="table-head">
+          <th>LAB NAME</th>
+          <th>DATE</th>
+          <th>TIME SLOT</th>
+          <th>SUBJECT</th>
+          <th>DELETE</th>
+          <th>EDIT</th>
+        
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor = "let lab of lab">
+          <td><b>{{lab.labname}}</b></td>
+          <td>{{lab.date}}</td>
+          <td>{{lab.from}} - {{lab.to}}</td>
+          <td>{{lab.subject}}</td>
+          <td><button (click)="onDelete(lab._id)" class="btn text-center btn-danger" id="delete">Delete</button></td>
+          <td><button (click)="onUpdate(lab._id)" class="btn text-center" id="edit">Edit</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
