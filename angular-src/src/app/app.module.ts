@@ -21,6 +21,7 @@ import {AuthGuard} from './guards/auth.guard';
 import { AddReservationComponent } from './components/add-reservation/add-reservation.component';
 import { ViewReservationComponent } from './components/view-reservation/view-reservation.component';
 import { CreateUpdateComponent } from './components/create-update/create-update.component';
+import { SearchReservationComponent } from './components/search-reservation/search-reservation.component';
 
 
 
@@ -34,7 +35,8 @@ const appRoutes: Routes = [
   {path:'userDash', component: UserDashModule},
   {path:'addReservation', component: AddReservationComponent},
   {path:'veiwReservation', component: ViewReservationComponent},
-  {path:'editReservation/:id',component:CreateUpdateComponent}
+  {path:'editReservation/:id',component:CreateUpdateComponent},
+  {path:'searchReservation', component:SearchReservationComponent}
   
 ]
 
@@ -49,7 +51,8 @@ const appRoutes: Routes = [
     DashboardComponent,
     AddReservationComponent,
     ViewReservationComponent,
-    CreateUpdateComponent
+    CreateUpdateComponent,
+    SearchReservationComponent
   ],
 
   imports: [

@@ -1,0 +1,25 @@
+<div class="jumbotron">
+  <h1 class="page-header text-center">Add Lab Reservation</h1>
+  <form (submit) = "searchByDate()" class="form-group my-2 my-lg-0">
+    <label>Search Lab Reservation by Date :</label>
+    <input name = "date" [(ngModel)] = "date" class="form-control mr-sm-2" type="date" placeholder="Search">
+    <input type="submit" class="btn" value="Search">
+  </form>
+
+  <table class="table table-hover">
+      <thead>
+        <tr id="table-head">
+          <th>LAB NAME</th>
+          <th>TIME SLOT</th>
+          <th>SUBJECT</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor = "let lab of lab">
+          <td>{{lab.labname}}</td>
+          <td>{{lab.from}} - {{lab.to}}</td>
+          <td>{{lab.subject}}</td>
+        </tr>
+      </tbody>
+    </table>
+</div>

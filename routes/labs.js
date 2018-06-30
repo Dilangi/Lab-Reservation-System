@@ -17,7 +17,7 @@ router.post('/addReservation', function(req, res, next){
 
     });
 
-    Lab.getLabByDate(newLabReservation.date, newLabReservation.labname, function(err,lab){
+    Lab.getResbyDateLab(newLabReservation.date, newLabReservation.labname, function(err,lab){
         if(err){
             res.json({success:false, msg: 'failed to load the lab'});
         } else {
@@ -106,6 +106,19 @@ router.get('/getReservation/:id',function(req,res,next){
     });
 });
 
+router.get('/serachReservation/:date', function(req, res, next){
+    const date = req.params.date;
+    console.log(date);
+    Lab.getLabbyDate(date, function(err,labs){
+        if(err){
+            res.json({success:false, msg:'failed to load the labs'});
+        } else {
+            res.json({success:true, labs:labs});
+        }
+    });
+    
+});
+
 router.get('/delete/:id',function(req,res,next){
     Lab.deleteReservation({_id:req.params.id}, function(err,labs){
         if(err){
@@ -127,15 +140,60 @@ router.post('/update/:id',function(req,res,next){
         to: req.body.to,
         _id:req.params.id
     });
-   // console.log(newLabReservation); testing
+   // console.log(newLabReservation);  testing
     //console.log(newLabReservation._id); testing
-    Lab.editReservation(newLabReservation._id,newLabReservation, function(err,labs){
-        if(err){
-            return res.json({success:false, msg:"update failed"});
+    Lab.getResbyDateLab(newLabReservation.date, newLabReservation.labname, function(err,lab){
+        if(err) {
+            res.json({success:false, msg: 'failed to load the lab'});
         } else {
-            res.json({success:true, msg:"Update successfully"});
+            function isEmpty(lab){
+                for (let y of lab){
+                    if((y.date != newLabReservation.date) || (y.labname != newLabReservation.labname)){
+                        return true;
+                    }
+                    return false;
+                }
+            }
+            if(isEmpty(lab)){
+                Lab.editReservation(newLabReservation._id, newLabReservation, function(err,lab){
+                    if(err){
+                        return res.json({success:false, msg:"update failed"});
+                    } else {
+                        res.json({success:true, msg:"Updated successfully"});
+                    }
+                });
+            } else {
+                function overLapReservation(lab){
+                    for (let x of lab) {
+                        if((x.from < newLabReservation.from) && (newLabReservation.from < x.to)){
+                            return false;
+                        }
+                        else if ((newLabReservation.from <= x.from) && (x.to <= newLabReservation.to)){
+                            return false;
+                        }
+                        else if((x.from < newLabReservation.to) && (newLabReservation.to < x.to)){
+                            return false;
+                        }
+                    }
+                    return true;
+                }
+                if(overLapReservation(lab)){
+                    Lab.editReservation(newLabReservation._id, newLabReservation, function(err,lab){
+                        if(err){
+                            return res.json({success:false, msg:"update failed"});
+                        } else {
+                            res.json({success:true, msg:"Updated successfully"});
+                        }
+                    });
+                } else {
+                    res.json({success:false,msg:'Time Overlap'});
+                }
+
+            }
+
         }
     });
+   
 });
 
 

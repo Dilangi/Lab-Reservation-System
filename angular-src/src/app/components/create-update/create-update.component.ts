@@ -64,7 +64,7 @@ export class CreateUpdateComponent implements OnInit {
         this.flashMessage.show('Your reservation is updated', {cssClass: 'alert alert-success', timeout: 3000});
         this.router.navigate(['/profile']);
       } else {
-        this.flashMessage.show('could not update your reservation', {cssClass: 'alert alert-danger', timeout: 3000});
+        this.flashMessage.show('This time period was reserved earlier', {cssClass: 'alert alert-danger', timeout: 3000});
         this.router.navigate(['/editReservation/'+this.id]);
       }
     

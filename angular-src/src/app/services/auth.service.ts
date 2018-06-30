@@ -112,6 +112,14 @@ export class AuthService {
     return this.http.post('http://localhost:3000/labs/update/'+id, reservation,{headers:headers})
     .pipe(map(res => res.json()));
   }
+
+  searchLab(date){
+    console.log("auth service"+date);
+    let headers = new Headers();
+    headers.append('Content-Type','application/json');
+    return this.http.get('http://localhost:3000/labs/serachReservation/'+date,{headers:headers})
+    .pipe(map(res => res.json()));
+  }
   
 }
 

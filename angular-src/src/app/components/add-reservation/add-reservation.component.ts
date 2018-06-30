@@ -51,7 +51,7 @@ export class AddReservationComponent implements OnInit {
       this.flashMessage.show('A new reservation is added', {cssClass: 'alert alert-success', timeout: 3000});
       this.router.navigate(['/veiwReservation']);
     } else {
-      this.flashMessage.show('Something went wrong', {cssClass: 'alert alert-danger', timeout: 3000});
+      this.flashMessage.show('This time period was reserved earlier', {cssClass: 'alert alert-danger', timeout: 3000});
       this.router.navigate(['/addReservation']);
     }
   });

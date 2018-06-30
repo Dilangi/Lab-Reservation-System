@@ -68,8 +68,14 @@ module.exports.editReservation = function(id,eReservation,callback){
     Lab.update(query,eReservation,callback);
 }
 
-// get lab by date
-module.exports.getLabByDate = function(rDate,rLabname,callback){
+// get lab by date & lab name
+module.exports.getResbyDateLab = function(rDate,rLabname,callback){
     const query = {date:rDate, labname:rLabname};
+    Lab.find(query,callback);
+}
+
+// get lab by date
+module.exports.getLabbyDate = function(rDate, callback){
+    const query = {date:rDate};
     Lab.find(query,callback);
 }
