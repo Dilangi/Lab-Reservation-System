@@ -13,7 +13,7 @@ export class AddReservationComponent implements OnInit {
   username: String;
   labname: String;
   subject:String;
-  date: Date;
+  date: String;
   from: String;
   to: String;
 

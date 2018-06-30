@@ -14,17 +14,59 @@ router.post('/addReservation', function(req, res, next){
         date: req.body.date,
         from: req.body.from,
         to: req.body.to,
-        _id:req.body.id
 
     });
 
-    Lab.addLab(newLabReservation, function(err, lab){  
+    Lab.getLabByDate(newLabReservation.date, newLabReservation.labname, function(err,lab){
         if(err){
-            res.json({success:false, msg:'Failed to add lab'});
+            res.json({success:false, msg: 'failed to load the lab'});
         } else {
-            res.json({success: true, msg:'Lab Reservation successful'});
+            function isEmpty(lab){
+                for (let y of lab){
+                    if((y.date != newLabReservation.date) || (y.labname != newLabReservation.labname)){
+                        return true;
+                    }
+                    return false;
+                }
+            }
+            if(isEmpty(lab)){
+                Lab.addLab(newLabReservation, function(err, lab){  
+                    if(err){
+                        res.json({success:false, msg:'Failed to add lab'});
+                    } else {
+                        res.json({success: true, msg:'Lab Reservation successful'});
+                    }
+                });
+            } else {
+                function overLapReservation(lab){
+                    for (let x of lab) {
+                        if((x.from < newLabReservation.from) && (newLabReservation.from < x.to)){
+                            return false;
+                        }
+                        else if ((newLabReservation.from <= x.from) && (x.to <= newLabReservation.to)){
+                            return false;
+                        }
+                        else if((x.from < newLabReservation.to) && (newLabReservation.to < x.to)){
+                            return false;
+                        }
+                    }
+                    return true;
+                }
+
+                if(overLapReservation(lab)){
+                    Lab.addLab(newLabReservation, function(err, lab){  
+                        if(err){
+                            res.json({success:false, msg:'Failed to add lab'});
+                        } else {
+                            res.json({success: true, msg:'Lab Reservation successful'});
+                        }
+                    });
+                } else {
+                    res.json({success:false,msg:'Time Overlap'});
+                }
+            }
         }
-    });
+    });  
 });
 
 router.get('/veiwReservation', function(req, res, next){
@@ -85,8 +127,8 @@ router.post('/update/:id',function(req,res,next){
         to: req.body.to,
         _id:req.params.id
     });
-    console.log(newLabReservation);
-    console.log(newLabReservation._id);
+   // console.log(newLabReservation); testing
+    //console.log(newLabReservation._id); testing
     Lab.editReservation(newLabReservation._id,newLabReservation, function(err,labs){
         if(err){
             return res.json({success:false, msg:"update failed"});
@@ -95,6 +137,8 @@ router.post('/update/:id',function(req,res,next){
         }
     });
 });
+
+
 
 
 module.exports = router;

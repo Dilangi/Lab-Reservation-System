@@ -57,9 +57,9 @@ onDelete(_id){
 
 } 
 
-onUpdate(id){
-  this.router.navigate(['/editReservation/'+id]);
+  onUpdate(id){
+    this.router.navigate(['/editReservation/'+id]);
 
-}
+  }
 }
 
