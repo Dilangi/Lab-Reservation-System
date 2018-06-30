@@ -60,6 +60,20 @@ export class AuthService {
     localStorage.clear();
   }
 
+  loadUserType(){
+    if(!tokenNotExpired('id_token')){
+      const user = localStorage.getItem('user');
+      this.user = JSON.parse(user);
+      if(this.user.usertype == "admin"){
+        return true;
+      } else {
+        return false;
+      }
+    } else {
+      return true;
+    }
+  }
+
   //add reservation
   addReservation(lab){ 
     let headers = new Headers();
