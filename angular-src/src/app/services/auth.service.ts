@@ -61,7 +61,7 @@ export class AuthService {
   }
 
   loadUserType(){
-    if(!tokenNotExpired('id_token')){
+    if(tokenNotExpired('id_token')){
       const user = localStorage.getItem('user');
       this.user = JSON.parse(user);
       if(this.user.usertype == "admin"){
@@ -70,7 +70,7 @@ export class AuthService {
         return false;
       }
     } else {
-      return true;
+      return false;
     }
   }
 

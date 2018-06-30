@@ -18,10 +18,12 @@ import {ValidateService} from './services/validate.service';
 import {AuthService} from './services/auth.service';
 import {FlashMessagesModule} from 'angular2-flash-messages';
 import {AuthGuard} from './guards/auth.guard';
+import {RoleGuard} from './guards/role.guard';
 import { AddReservationComponent } from './components/add-reservation/add-reservation.component';
 import { ViewReservationComponent } from './components/view-reservation/view-reservation.component';
 import { CreateUpdateComponent } from './components/create-update/create-update.component';
 import { SearchReservationComponent } from './components/search-reservation/search-reservation.component';
+import { AdminPanelComponent } from './components/admin-panel/admin-panel.component';
 
 
 
@@ -33,10 +35,11 @@ const appRoutes: Routes = [
   {path:'dashboard', component: DashboardComponent, canActivate:[AuthGuard]},
   {path:'profile', component: ProfileComponent, canActivate:[AuthGuard]},
   {path:'userDash', component: UserDashModule},
-  {path:'addReservation', component: AddReservationComponent},
-  {path:'veiwReservation', component: ViewReservationComponent},
-  {path:'editReservation/:id',component:CreateUpdateComponent},
-  {path:'searchReservation', component:SearchReservationComponent}
+  {path:'addReservation', component: AddReservationComponent, canActivate:[AuthGuard]},
+  {path:'veiwReservation', component: ViewReservationComponent, canActivate:[AuthGuard]},
+  {path:'editReservation/:id',component:CreateUpdateComponent, canActivate:[AuthGuard]},
+  {path:'searchReservation', component:SearchReservationComponent, canActivate:[AuthGuard]},
+  {path:'adminPanel', component:AdminPanelComponent, canActivate:[RoleGuard]}
   
 ]
 
@@ -52,7 +55,8 @@ const appRoutes: Routes = [
     AddReservationComponent,
     ViewReservationComponent,
     CreateUpdateComponent,
-    SearchReservationComponent
+    SearchReservationComponent,
+    AdminPanelComponent
   ],
 
   imports: [

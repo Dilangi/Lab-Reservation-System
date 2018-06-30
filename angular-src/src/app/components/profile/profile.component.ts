@@ -46,7 +46,8 @@ onDelete(_id){
   console.log(_id);
   this.authService.delete(_id).subscribe(res =>{
     if(res.success){
-      this.router.navigate(['/profile']);
+      this.ngOnInit();
+      //this.router.navigate(['/profile']);
       console.log('deleted');
     }
     

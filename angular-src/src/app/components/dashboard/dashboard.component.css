@@ -11,11 +11,11 @@
 
 
 .selections #add {
-    background-color: #21aba5;
+    background-color: #f87829;
 }
 
 .selections #search {
-    background-color: #f87829;
+    background-color: #21aba5;
 }
 
 .selections button:hover {

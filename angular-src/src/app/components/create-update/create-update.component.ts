@@ -10,6 +10,7 @@ import {Router,ActivatedRoute,Params} from '@angular/router';
   styleUrls: ['./create-update.component.css']
 })
 export class CreateUpdateComponent implements OnInit {
+  today = Date.now();
   id:String;
   username: String;
   labname: String;

@@ -10,6 +10,7 @@ import {Router} from '@angular/router';
   styleUrls: ['./add-reservation.component.css']
 })
 export class AddReservationComponent implements OnInit {
+  today = Date.now();
   username: String;
   labname: String;
   subject:String;

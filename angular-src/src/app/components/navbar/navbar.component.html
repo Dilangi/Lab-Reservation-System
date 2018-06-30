@@ -13,7 +13,7 @@
           <a [routerLink] = "['/']" class="nav-link">HOME</a>
         </li>
         <li *ngIf = "authService.loadUserType()" class="nav-item" [routerLinkActive] = "['active']" [routerLinkActiveOptions] = "{exact:true}">
-            <a [routerLink] = "['/dashboard']" class="nav-link">ADMIN PANEL</a>
+            <a [routerLink] = "['/adminPanel']" class="nav-link">ADMIN PANEL</a>
           </li>
           <li *ngIf = "authService.loggedIn()" class="nav-item" [routerLinkActive] = "['active']" [routerLinkActiveOptions] = "{exact:true}">
             <a [routerLink] = "['/dashboard']" class="nav-link">DASHBOARD</a>

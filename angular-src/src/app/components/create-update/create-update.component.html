@@ -1,6 +1,6 @@
 <div class="jumbotron">
   <h1 class="page-header text-center">Add Lab Reservation</h1>
-     <form (submit) = "onEditLabReservation(id)" > <!--event creating-->
+     <form (submit) = "onEditLabReservation(id)" ngNativeValidate> <!--event creating-->
        <div class="form-group">
            <label>Select Lab</label>
            <select class="form-control" id="exampleSelect1" name="labname" [(ngModel)] = "labname">
@@ -27,7 +27,7 @@
          </div>
          <div class="form-group">
              <label>Select Date</label>
-             <input type="date" class="form-control" name = "date" [(ngModel)] = "date" placeholder="dd/mm/yy">
+             <input type="date" min="{{today | date:'yyyy-MM-dd'}}" class="form-control" name = "date" [(ngModel)] = "date" placeholder="dd/mm/yy">
          </div>
        <div class="form-group">
          <label>Add Time Slots</label>

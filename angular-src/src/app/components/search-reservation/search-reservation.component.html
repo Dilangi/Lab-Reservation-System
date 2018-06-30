@@ -6,6 +6,16 @@
     <input type="submit" class="btn" value="Search">
   </form>
 
+<div class="row">
+    <div class="col-md-3">  </div>
+    <div class="col-md-3"></div>
+    <div class="col-md-3"></div>
+    <div *ngIf="authService.loadUserType()" class="col-md-3">
+      <p>To export the details as a pdf</p>
+      <button (click)="download()" class="btn btn-primary" >Download</button>
+    </div>
+</div>
+
   <table class="table table-hover">
       <thead>
         <tr id="table-head">

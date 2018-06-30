@@ -4,6 +4,8 @@ import {FlashMessagesService} from 'angular2-flash-messages';
 import {ValidateService} from '../../services/validate.service';
 import {Router} from '@angular/router';
 
+declare var jsPDF: any;
+
 @Component({
   selector: 'app-search-reservation',
   templateUrl: './search-reservation.component.html',
@@ -21,7 +23,7 @@ export class SearchReservationComponent implements OnInit {
     private flashMessage: FlashMessagesService,
     private authService: AuthService,
     private router: Router
-  ) { }
+  ) {}
 
   ngOnInit() {
   }
@@ -39,6 +41,24 @@ export class SearchReservationComponent implements OnInit {
     }
   );
 
+  }
+
+  download(){
+    const date = this.date;
+    console.log(date);
+    var columns = ["LAB NAME","SUBJECT", "FROM", "TO", "RESERVED BY"];
+    var rows = [];
+    var data = this.lab;
+    for (let lab of data) {
+      var array = [];
+      array.push(lab.labname, lab.subject, lab.from, lab.to, lab.username);
+      rows.push(array);
+      
+    }
+
+    var doc = new jsPDF('p', 'pt');
+    doc.autoTable(columns,rows);
+    doc.save(date+'_'+this.labname+'_'+'reservations.pdf');
   }
 
 }
