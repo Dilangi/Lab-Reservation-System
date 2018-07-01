@@ -29,6 +29,14 @@ export class AuthService {
      .pipe(map(res => res.json()));
   }
 
+  getUser(){
+    let headers = new Headers();
+    headers.append('Content-Type','application/json');
+    return this.http.get('http://localhost:3000/users/viewUser', {headers: headers})
+   .pipe(map(res => res.json()));
+
+  }
+
   getProfile(){
     let headers = new Headers();
     this.loadToken();

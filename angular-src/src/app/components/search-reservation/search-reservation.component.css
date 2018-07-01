@@ -1,3 +1,14 @@
 .jumbotron .btn {
     background-color: #163a5f;
 }
+
+.jumbotron .download .btn {
+    background-color: #45eba5;
+}
+
+.table #table-head {
+    background-color: #1d566e;
+    color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+}

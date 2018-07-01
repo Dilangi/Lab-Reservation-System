@@ -1,3 +1,19 @@
-<p>
-  admin-panel works!
-</p>
+<div class="jumbotron">
+  <h2 class="page-header">Users Info</h2>
+  <table class="table table-hover">
+    <thead>
+      <tr id="table-head">
+        <th>NAME</th>
+        <th>USERNAME</th>
+        <th>EMAIL</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor = "let user of user">
+        <td><b>{{user.name}}</b></td>
+        <td>{{user.username}}</td>
+        <td>{{user.email}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

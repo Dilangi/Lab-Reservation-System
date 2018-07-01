@@ -46,11 +46,11 @@ export class SearchReservationComponent implements OnInit {
   download(){
     const date = this.date;
     console.log(date);
-    var columns = ["LAB NAME","SUBJECT", "FROM", "TO", "RESERVED BY"];
-    var rows = [];
-    var data = this.lab;
+    const columns = ["LAB NAME","SUBJECT", "FROM", "TO", "RESERVED BY"];
+    const rows = [];
+    const data = this.lab;
     for (let lab of data) {
-      var array = [];
+      const array = [];
       array.push(lab.labname, lab.subject, lab.from, lab.to, lab.username);
       rows.push(array);
       
@@ -58,7 +58,8 @@ export class SearchReservationComponent implements OnInit {
 
     var doc = new jsPDF('p', 'pt');
     doc.autoTable(columns,rows);
-    doc.save(date+'_'+this.labname+'_'+'reservations.pdf');
+   // console.log(this.lab);
+    doc.save(date+'_'+'reservations.pdf');
   }
 
 }
